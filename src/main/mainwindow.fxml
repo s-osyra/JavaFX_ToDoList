@@ -1,0 +1,27 @@
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
+
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Button?>
+<BorderPane fx:controller="main.Controller"
+            xmlns:fx="http://javafx.com/fxml" >
+
+
+    <top>
+        <HBox>
+            <Button text="New" />
+        </HBox>
+    </top>
+
+    <left>
+        <ListView fx:id="toDoListView" onMouseClicked="#handleDetailView" >
+
+        </ListView>
+    </left>
+
+    <center>
+        <TextArea fx:id="description" editable="false"/>
+    </center>
+
+</BorderPane>
