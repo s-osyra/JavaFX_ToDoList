@@ -32,6 +32,11 @@ public class TaskData {
         return tasks;
     }
 
+    public void addTask (task task) {
+        tasks.add(task);
+    }
+
+
 //    public void setTasks (List<task> tasks) {
 //        this.tasks = tasks;
 //    }

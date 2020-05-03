@@ -75,9 +75,11 @@ public class Controller {
     public void showNewItemDialog() {
         Dialog<ButtonType> dialog = new Dialog<>();
         dialog.initOwner(mainBorderPane.getScene().getWindow());
+        FXMLLoader fxmlloader = new FXMLLoader();
+        fxmlloader.setLocation(getClass().getResource("newTaskDialog.fxml"));
         try{
-            Parent root = FXMLLoader.load(getClass().getResource("newTaskDialog.fxml"));
-            dialog.getDialogPane().setContent(root);
+            dialog.getDialogPane().setContent(fxmlloader.load());
+
         } catch (IOException e) {
             System.out.println("Couldn't load the dialog");
             return;
@@ -88,6 +90,10 @@ public class Controller {
 
         Optional<ButtonType> result = dialog.showAndWait();
         if(result.isPresent() && result.get() == ButtonType.OK) {
+            NewTaskDialog controller = fxmlloader.getController();
+            task newTask = controller.processResults();
+            toDoListView.getItems().setAll(TaskData.getInstance().getTasks());
+            toDoListView.getSelectionModel().select(newTask);
             System.out.println("OK pressed");
         } else {
             System.out.println("Cancel pressed");

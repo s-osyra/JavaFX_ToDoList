@@ -2,9 +2,12 @@ package main;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
-import main.models.TaskData;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 
-import java.awt.*;
+import main.models.TaskData;
+import main.models.task;
+
 import java.time.LocalDate;
 
 public class NewTaskDialog {
@@ -13,17 +16,20 @@ public class NewTaskDialog {
     private TextField shortDescriptionField;
 
     @FXML
-    private TextArea detailsArea;
+    private TextArea detailsField;
 
     @FXML
-    private DatePicker deadlinePicker;
+    private DatePicker deadLinePicker;
 
-    public void processResults() {
+    public task processResults() {
         String shortDescription = shortDescriptionField.getText().trim();
-        String details = detailsArea.getText().trim();
-        LocalDate deadlineValue = deadlinePicker.getValue();
+        String details = detailsField.getText().trim();
+        LocalDate deadlineValue = deadLinePicker.getValue();
 
-//        TaskData.getInstance().addTodoItem(new TodoItem(shortDescription, details, deadlineValue));
+        task newTask = new task(shortDescription, details, deadlineValue);
+        TaskData.getInstance().addTask(newTask);
+
+        return newTask;
     }
 
 }
