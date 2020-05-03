@@ -5,6 +5,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import main.models.TaskData;
+
+import java.io.IOException;
 
 public class Main extends Application {
 
@@ -17,8 +20,30 @@ public class Main extends Application {
     }
 
 
+
+
     public static void main(String[] args) {
         launch(args);
 
     }
+    @Override
+    public void stop() throws Exception {
+        try {
+            TaskData.getInstance().storeTasks();
+
+        } catch (IOException e){
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @Override
+    public void init() throws Exception {
+        try {
+            TaskData.getInstance().loadTasks();
+
+        } catch (IOException e){
+            System.out.println(e.getMessage());
+        }
+    }
+
 }
