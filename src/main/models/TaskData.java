@@ -1,6 +1,7 @@
 package main.models;
 
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -17,7 +18,7 @@ public class TaskData {
     private static TaskData instance = new TaskData();
     private static String filename = "Task_Data.txt";
 
-    private List<task> tasks;
+    private ObservableList<task> tasks;
     private DateTimeFormatter formatter;
 
     public static TaskData getInstance() {
@@ -28,7 +29,7 @@ public class TaskData {
         formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
     }
 
-    public List<task> getTasks() {
+    public ObservableList<task> getTasks() {
         return tasks;
     }
 

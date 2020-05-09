@@ -1,22 +1,20 @@
 package main;
 
 
-
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.paint.Color;
+import javafx.util.Callback;
 import main.models.TaskData;
 import main.models.task;
-
 
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -64,9 +62,33 @@ public class Controller {
             }
         });
 
-        toDoListView.getItems().setAll(TaskData.getInstance().getTasks());
+        toDoListView.setItems(TaskData.getInstance().getTasks());
         toDoListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         toDoListView.getSelectionModel().selectFirst();
+
+        toDoListView.setCellFactory(new Callback<ListView<task>, ListCell<task>>() {
+            @Override
+            public ListCell<task> call(ListView<task> param) {
+                ListCell<task> cell = new ListCell<task>(){
+                    @Override
+                    protected void updateItem(task item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (empty) {
+                            setText(null);
+                        } else {
+                            setText(item.getShortDescription());
+                            if (item.getDeadLine().isBefore(LocalDate.now().plusDays(1))) {
+                                setTextFill(Color.RED);
+                            } else if (item.getDeadLine().equals(LocalDate.now().plusDays(1))){
+                                setTextFill(Color.ORANGE);
+                            }
+                        }
+                    }
+                };
+
+                return cell;
+            }
+        });
 
 
     }
@@ -75,6 +97,8 @@ public class Controller {
     public void showNewItemDialog() {
         Dialog<ButtonType> dialog = new Dialog<>();
         dialog.initOwner(mainBorderPane.getScene().getWindow());
+        dialog.setTitle("Add new task");
+        dialog.setHeaderText("Adding new task to the list.");
         FXMLLoader fxmlloader = new FXMLLoader();
         fxmlloader.setLocation(getClass().getResource("newTaskDialog.fxml"));
         try{
@@ -92,11 +116,8 @@ public class Controller {
         if(result.isPresent() && result.get() == ButtonType.OK) {
             NewTaskDialog controller = fxmlloader.getController();
             task newTask = controller.processResults();
-            toDoListView.getItems().setAll(TaskData.getInstance().getTasks());
+            //toDoListView.getItems().setAll(TaskData.getInstance().getTasks());
             toDoListView.getSelectionModel().select(newTask);
-            System.out.println("OK pressed");
-        } else {
-            System.out.println("Cancel pressed");
         }
     }
 

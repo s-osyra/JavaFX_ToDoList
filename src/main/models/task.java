@@ -39,8 +39,8 @@ public class task {
         this.deadLine = deadLine;
     }
 
-    @Override
-    public String toString() {
-       return getShortDescription();
-    }
+//    @Override
+//    public String toString() {
+//       return getShortDescription();
+//    }
 }
