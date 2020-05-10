@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -46,6 +47,15 @@ public class Controller {
     public void initialize() {
 
         listContextMenu = new ContextMenu();
+
+        MenuItem editMenuTask = new MenuItem("Edit");
+        editMenuTask.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                showEditTaskDialog();
+            }
+        });
+
         MenuItem deleteMenuTask = new MenuItem("Delete");
         deleteMenuTask.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -55,17 +65,19 @@ public class Controller {
             }
         });
 
-        listContextMenu.getItems().addAll(deleteMenuTask);
+        listContextMenu.getItems().addAll(editMenuTask, deleteMenuTask);
 
         toDoListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<task>() {
             @Override
             public void changed(ObservableValue<? extends task> observableValue, task oldValue, task newValue) {
-                if(newValue != null){
+                if(newValue != oldValue){
                     task item = toDoListView.getSelectionModel().getSelectedItem();
                     DateTimeFormatter df = DateTimeFormatter.ofPattern("dd.MM.YYYY");
                     description.setText(item.getDetails());
                     deadline.setText(df.format(item.getDeadLine()));
+
                 }
+
             }
         });
 
@@ -76,7 +88,6 @@ public class Controller {
             }
         });
 
-        //toDoListView.setItems(TaskData.getInstance().getTasks());
         toDoListView.setItems(sortedList);
         toDoListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         toDoListView.getSelectionModel().selectFirst();
@@ -122,7 +133,7 @@ public class Controller {
     public void showNewItemDialog() {
         Dialog<ButtonType> dialog = new Dialog<>();
         dialog.initOwner(mainBorderPane.getScene().getWindow());
-        dialog.setTitle("Add new task");
+        dialog.setTitle("Add task");
         dialog.setHeaderText("Adding new task to the list.");
         FXMLLoader fxmlloader = new FXMLLoader();
         fxmlloader.setLocation(getClass().getResource("newTaskDialog.fxml"));
@@ -141,7 +152,45 @@ public class Controller {
         if(result.isPresent() && result.get() == ButtonType.OK) {
             NewTaskDialog controller = fxmlloader.getController();
             task newTask = controller.processResults();
+            TaskData.getInstance().addTask(newTask);
             toDoListView.getSelectionModel().select(newTask);
+        }
+    }
+
+    @FXML
+    public void showEditTaskDialog() {
+        Dialog<ButtonType> dialog = new Dialog<>();
+        dialog.initOwner(mainBorderPane.getScene().getWindow());
+        dialog.setTitle("Edit task");
+        dialog.setHeaderText("Editing task.");
+        FXMLLoader fxmlloader = new FXMLLoader();
+        fxmlloader.setLocation(getClass().getResource("NewTaskDialog.fxml"));
+
+        task selectedTask = selectedTask();
+
+        try{
+            Parent parent = fxmlloader.load();
+            NewTaskDialog controller = (NewTaskDialog) fxmlloader.getController();
+            controller.editingResults(selectedTask);
+            dialog.getDialogPane().setContent(parent);
+
+        } catch (IOException e) {
+            System.out.println("Couldn't load the dialog");
+            return;
+        }
+
+        dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
+        dialog.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
+
+        Optional<ButtonType> result = dialog.showAndWait();
+        if(result.isPresent() && result.get() == ButtonType.OK) {
+            NewTaskDialog controller = fxmlloader.getController();
+            task editedTask = controller.processResults();
+            selectedTask.setShortDescription(editedTask.getShortDescription());
+            selectedTask.setDetails(editedTask.getDetails());
+            selectedTask.setDeadLine(editedTask.getDeadLine());
+            toDoListView.getSelectionModel().select(selectedTask);
+            toDoListView.refresh();
         }
     }
 
@@ -158,7 +207,6 @@ public class Controller {
     @FXML
     public void handleDetailView(){
         task task = toDoListView.getSelectionModel().getSelectedItem();
-
     }
 
     @FXML
@@ -176,6 +224,11 @@ public class Controller {
         if (result.isPresent() && (result.get()) == ButtonType.OK) {
             TaskData.getInstance().deleteTaskData(task);
         }
+    }
+
+    public task selectedTask () {
+        task selectedTask = toDoListView.getSelectionModel().getSelectedItem();
+        return selectedTask;
     }
 
 }

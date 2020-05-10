@@ -49,12 +49,12 @@
             <HBox>
                 <Label text="Due: " style="-fx-background-color: white">
                     <font>
-                        <Font name="TImes New Roman bold" size="20"/>
+                        <Font name="Times New Roman bold" size="20"/>
                     </font>
                 </Label>
                 <Label fx:id="deadline">
                     <font>
-                        <Font name="TImes New Roman bold" size="20"/>
+                        <Font name="Times New Roman bold" size="20"/>
                     </font>
                 </Label>
             </HBox>
