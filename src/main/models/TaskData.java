@@ -12,7 +12,6 @@ import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Iterator;
-import java.util.List;
 
 public class TaskData {
     private static TaskData instance = new TaskData();
@@ -37,10 +36,6 @@ public class TaskData {
         tasks.add(task);
     }
 
-
-//    public void setTasks (List<task> tasks) {
-//        this.tasks = tasks;
-//    }
 
     public void loadTasks() throws IOException {
         tasks = FXCollections.observableArrayList();
@@ -91,6 +86,10 @@ public class TaskData {
                 bw.close();
             }
         }
+    }
+
+    public void deleteTaskData (task task) {
+        tasks.remove(task);
     }
 
 }

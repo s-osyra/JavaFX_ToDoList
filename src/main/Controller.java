@@ -1,11 +1,16 @@
 package main;
 
-
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.transformation.SortedList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.util.Callback;
@@ -15,6 +20,7 @@ import main.models.task;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,21 +40,22 @@ public class Controller {
     @FXML
     private BorderPane mainBorderPane;
 
+    @FXML
+    private ContextMenu listContextMenu;
+
     public void initialize() {
-//        task item1 = new task("1", "Details of 1", LocalDate.of(2020, 1, 1));
-//        task item2 = new task("2", "Details of 2", LocalDate.of(2020, 2, 2));
-//        task item3 = new task("3", "Details of 3", LocalDate.of(2020, 3, 3));
-//        task item4 = new task("4", "Details of 4", LocalDate.of(2020, 4, 4));
-//        task item5 = new task("5", "Details of 5", LocalDate.of(2020, 5, 5));
-//
-//        myTasksList = new ArrayList<task>();
-//        myTasksList.add(item1);
-//        myTasksList.add(item2);
-//        myTasksList.add(item3);
-//        myTasksList.add(item4);
-//        myTasksList.add(item5);
-//
-//        TaskData.getInstance().setTasks(myTasksList);
+
+        listContextMenu = new ContextMenu();
+        MenuItem deleteMenuTask = new MenuItem("Delete");
+        deleteMenuTask.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                task task = toDoListView.getSelectionModel().getSelectedItem();
+                deleteTask(task);
+            }
+        });
+
+        listContextMenu.getItems().addAll(deleteMenuTask);
 
         toDoListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<task>() {
             @Override
@@ -62,7 +69,15 @@ public class Controller {
             }
         });
 
-        toDoListView.setItems(TaskData.getInstance().getTasks());
+        SortedList<task> sortedList = new SortedList<task>(TaskData.getInstance().getTasks(), new Comparator<task>() {
+            @Override
+            public int compare(task o1, task o2) {
+                return o1.getDeadLine().compareTo(o2.getDeadLine());
+            }
+        });
+
+        //toDoListView.setItems(TaskData.getInstance().getTasks());
+        toDoListView.setItems(sortedList);
         toDoListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         toDoListView.getSelectionModel().selectFirst();
 
@@ -86,6 +101,16 @@ public class Controller {
                     }
                 };
 
+
+                cell.emptyProperty().addListener(
+                        (obs,wasEmpty,isNowEmpty) -> {
+                            if (isNowEmpty) {
+                                cell.setContextMenu(null);
+                            } else {
+                                cell.setContextMenu(listContextMenu);
+                            }
+                        }
+                );
                 return cell;
             }
         });
@@ -116,19 +141,41 @@ public class Controller {
         if(result.isPresent() && result.get() == ButtonType.OK) {
             NewTaskDialog controller = fxmlloader.getController();
             task newTask = controller.processResults();
-            //toDoListView.getItems().setAll(TaskData.getInstance().getTasks());
             toDoListView.getSelectionModel().select(newTask);
         }
     }
 
     @FXML
+    public void handleKeyPressed (KeyEvent keyEvent) {
+        task selectedTask = toDoListView.getSelectionModel().getSelectedItem();
+        if (selectedTask != null) {
+            if(keyEvent.getCode().equals(KeyCode.DELETE)){
+                deleteTask(selectedTask);
+            }
+        }
+    }
+
+    @FXML
     public void handleDetailView(){
-        task item = toDoListView.getSelectionModel().getSelectedItem();
-//        description.setText(item.getDetails());
-//        deadline.setText(item.getDeadLine().toString());
+        task task = toDoListView.getSelectionModel().getSelectedItem();
 
     }
 
+    @FXML
+    public void handleExit(){
+        Platform.exit();
+    }
 
+    public void deleteTask(task task) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Delete task");
+        alert.setHeaderText("Delete task: " + task.getShortDescription());
+        alert.setContentText("Are you sure? Press OK to confirm.");
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if (result.isPresent() && (result.get()) == ButtonType.OK) {
+            TaskData.getInstance().deleteTaskData(task);
+        }
+    }
 
 }

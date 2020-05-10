@@ -20,25 +20,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/javafx_swt.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaFX_ToDo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/JavaFX_ToDo.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Task_Data.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Task_Data.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/JavaFX_ToDo/main/Controller$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaFX_ToDo/main/Controller$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JavaFX_ToDo/main/Controller$2$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JavaFX_ToDo/main/Controller$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaFX_ToDo/main/Controller$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/JavaFX_ToDo/main/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaFX_ToDo/main/Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JavaFX_ToDo/main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaFX_ToDo/main/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/JavaFX_ToDo/main/mainwindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaFX_ToDo/main/mainwindow.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/JavaFX_ToDo/main/models/TaskData.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaFX_ToDo/main/models/TaskData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JavaFX_ToDo/main/models/task.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaFX_ToDo/main/models/task.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JavaFX_ToDo/main/newTaskDialog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaFX_ToDo/main/newTaskDialog.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JavaFX_ToDo/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaFX_ToDo/module-info.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/mainwindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/mainwindow.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/models/TaskData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/models/TaskData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/models/task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/models/task.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/newTaskDialog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/newTaskDialog.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/module-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +124,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dynamic.classpath" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Documents/jlfgr-1_0/jlfgr-1.0.jar!/" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.5158817" />
@@ -139,7 +134,9 @@
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Sebastian\Desktop\JavaProjects\JavaFX_ToDo\src" />
+      <recent name="C:\Users\Sebastian\Desktop\JavaProjects\JavaFX_ToDo" />
       <recent name="C:\Users\Sebastian\Desktop\JavaProjects\JavaFX_ToDo\src\main" />
+      <recent name="C:\Users\Sebastian\Desktop\JavaProjects\JavaFX_ToDo\src\main\models" />
     </key>
   </component>
   <component name="RunManager">
@@ -256,11 +253,11 @@
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="-146" y="90" width="1091" height="851" key="#Project_Structure" timestamp="1589049694687">
+    <state x="268" y="62" width="1091" height="851" key="#Project_Structure" timestamp="1589099728477">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1036" y="181" key="#Project_Structure/0.0.1920.1036@0.0.1920.1036" timestamp="1588424843782" />
-    <state x="-146" y="90" width="1091" height="851" key="#Project_Structure/0.0.1920.1040@0.0.1920.1040" timestamp="1589049694687" />
+    <state x="268" y="62" width="1091" height="851" key="#Project_Structure/0.0.1920.1040@0.0.1920.1040" timestamp="1589099728477" />
     <state x="378" y="180" key="#com.intellij.ide.util.MemberChooser" timestamp="1588705716520">
       <screen x="0" y="0" width="1920" height="1036" />
     </state>
@@ -269,30 +266,30 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="689" y="382" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1920.1040@0.0.1920.1040" timestamp="1589047283741" />
-    <state x="510" y="238" key="FileChooserDialogImpl" timestamp="1589049734115">
+    <state x="510" y="238" key="FileChooserDialogImpl" timestamp="1589099679093">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="510" y="238" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1589049734115" />
-    <state width="1424" height="399" key="GridCell.Tab.0.bottom" timestamp="1589050192582">
+    <state x="510" y="238" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1589099679093" />
+    <state width="690" height="328" key="GridCell.Tab.0.bottom" timestamp="1589101378892">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="923" height="278" key="GridCell.Tab.0.bottom/0.0.1920.1036@0.0.1920.1036" timestamp="1588706374235" />
-    <state width="1424" height="399" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1589050192582" />
-    <state width="1424" height="399" key="GridCell.Tab.0.center" timestamp="1589050192582">
+    <state width="690" height="328" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1589101378892" />
+    <state width="690" height="328" key="GridCell.Tab.0.center" timestamp="1589101378892">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="923" height="278" key="GridCell.Tab.0.center/0.0.1920.1036@0.0.1920.1036" timestamp="1588706374235" />
-    <state width="1424" height="399" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1589050192582" />
-    <state width="1424" height="399" key="GridCell.Tab.0.left" timestamp="1589050192581">
+    <state width="690" height="328" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1589101378892" />
+    <state width="690" height="328" key="GridCell.Tab.0.left" timestamp="1589101378892">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="923" height="278" key="GridCell.Tab.0.left/0.0.1920.1036@0.0.1920.1036" timestamp="1588706374235" />
-    <state width="1424" height="399" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1589050192581" />
-    <state width="1424" height="399" key="GridCell.Tab.0.right" timestamp="1589050192582">
+    <state width="690" height="328" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1589101378892" />
+    <state width="690" height="328" key="GridCell.Tab.0.right" timestamp="1589101378892">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="923" height="278" key="GridCell.Tab.0.right/0.0.1920.1036@0.0.1920.1036" timestamp="1588706374235" />
-    <state width="1424" height="399" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1589050192582" />
+    <state width="690" height="328" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1589101378892" />
     <state width="1878" height="334" key="GridCell.Tab.1.bottom" timestamp="1588434692039">
       <screen x="0" y="0" width="1920" height="1036" />
     </state>
@@ -313,10 +310,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="122" y="263" width="1258" height="514" key="IDE.errors.dialog/0.0.1920.1040@0.0.1920.1040" timestamp="1589048514069" />
-    <state x="967" y="154" key="SettingsEditor" timestamp="1588424771322">
-      <screen x="0" y="0" width="1920" height="1036" />
+    <state x="41" y="56" key="SettingsEditor" timestamp="1589091527560">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="967" y="154" key="SettingsEditor/0.0.1920.1036@0.0.1920.1036" timestamp="1588424771322" />
+    <state x="41" y="56" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1589091527560" />
     <state x="239" y="125" key="new project wizard" timestamp="1589049735027">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
